@@ -1,6 +1,6 @@
 services:
   dockge:
-    image: louislam/dockge:latest
+    image: louislam/dockge:1.5.0
     restart: unless-stopped
     ports:
       # Host Port : Container Port
@@ -20,3 +20,7 @@ services:
     environment:
       # Tell Dockge where is your stacks directory
       - DOCKGE_STACKS_DIR=/var/lib/stacks
+    labels:
+      wud.tag.include: ^\d+\.\d+\.\d+$$
+      wud.link.template: https://github.com/louislam/dockge/releases/tag/$${major}.$${minor}.$${patch}
+      wud.display.name: dockge
